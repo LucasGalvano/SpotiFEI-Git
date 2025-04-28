@@ -10,19 +10,9 @@ import java.sql.SQLException;
  */
 
 public class Conexao {
-    public static Connection getConnection() {
-        Connection conexao = null;
-        try {
-            // Configurações ESPECÍFICAS para seu BD:
-            String url = "jdbc:postgresql://localhost:5432/BD-SpotFEI";
-            String usuario = "postgres";
-            String senha = "paocomovo234";
-            
-            conexao = DriverManager.getConnection(url, usuario, senha);
-            System.out.println("Conexão estabelecida com BD-SpotFEI!");
-        } catch (SQLException e) {
-            System.err.println("Erro na conexão: " + e.getMessage());
-        }
+    public static Connection getConnection() throws SQLException {
+        Connection conexao = DriverManager.getConnection(
+                "jdbc:postgresql://localhost:5432/BD-SpotFEI", "postgres", "paocomovo234");
         return conexao;
     }   
 }
