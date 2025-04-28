@@ -27,6 +27,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         bt_buscar_home = new javax.swing.JButton();
         txt_busca_home = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        bt_curtir_home = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -34,8 +36,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lbl_SpotiFEI_home.setForeground(new java.awt.Color(0, 102, 0));
         lbl_SpotiFEI_home.setText("Spoti");
 
-        lbl_FEI_home.setFont(new java.awt.Font("Verdana", 3, 18)); // NOI18N
-        lbl_FEI_home.setForeground(new java.awt.Color(0, 0, 102));
+        lbl_FEI_home.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        lbl_FEI_home.setForeground(new java.awt.Color(0, 51, 255));
         lbl_FEI_home.setText("FEI");
 
         bt_buscar_home.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -50,6 +52,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         jLabel1.setText("Tocando agora:");
 
+        bt_curtir_home.setText("Curtir");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel2.setText("Descubra novas músicas!");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -59,13 +66,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbl_SpotiFEI_home)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbl_FEI_home, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 366, Short.MAX_VALUE)
-                        .addComponent(txt_busca_home, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bt_curtir_home))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lbl_SpotiFEI_home)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lbl_FEI_home, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txt_busca_home, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 351, Short.MAX_VALUE)
+                                .addComponent(jLabel2)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(bt_buscar_home)))
                 .addContainerGap())
@@ -79,8 +92,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(lbl_FEI_home)
                     .addComponent(bt_buscar_home)
                     .addComponent(txt_busca_home, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 386, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addGap(43, 43, 43)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 314, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(bt_curtir_home, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
 
@@ -128,7 +145,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_buscar_home;
+    private javax.swing.JButton bt_curtir_home;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lbl_FEI_home;
     private javax.swing.JLabel lbl_SpotiFEI_home;
     private javax.swing.JTextField txt_busca_home;
