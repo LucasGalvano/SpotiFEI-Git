@@ -217,12 +217,14 @@ public class LoginFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_usuario_loginActionPerformed
 
     private void bt_cadastrar_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastrar_loginActionPerformed
-        c.loginUsuario();
+        CadastroFrame cf = new CadastroFrame();
+        cf.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bt_cadastrar_loginActionPerformed
 
     private void bt_fazerLogin_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_fazerLogin_loginActionPerformed
-        // TODO add your handling code here:
+        c.loginUsuario();
+        this.setVisible(false);
     }//GEN-LAST:event_bt_fazerLogin_loginActionPerformed
 
     /**

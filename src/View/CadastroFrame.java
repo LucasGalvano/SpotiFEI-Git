@@ -1,5 +1,6 @@
 package View;
 
+import Control.CadastroControl;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -15,6 +16,7 @@ public class CadastroFrame extends javax.swing.JFrame {
      */
     public CadastroFrame() {
         initComponents();
+        c = new CadastroControl(this);
     }
     
     // Getters e Setters
@@ -179,6 +181,7 @@ public class CadastroFrame extends javax.swing.JFrame {
 
     private void bt_cadastrar_cadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastrar_cadastroActionPerformed
         // TODO add your handling code here:
+        c.salvarUsuario();
     }//GEN-LAST:event_bt_cadastrar_cadastroActionPerformed
 
     /**
@@ -216,6 +219,7 @@ public class CadastroFrame extends javax.swing.JFrame {
 //        });
 //    }
 
+    private CadastroControl c;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_cadastrar_cadastro;
     private javax.swing.JLabel lbl_SpotiFEI_cadastro;

@@ -27,7 +27,7 @@ public class UsuariosDAO {
         return resultado;        
     }
     
-    public void atualizar(Usuario usuario) throws SQLException{
+    public void inserir(Usuario usuario) throws SQLException{
         String sql = "insert into usuario (name, password) values ('"
                       + usuario.getUsuario() + "', '"
                       + usuario.getSenha()   + "')";
