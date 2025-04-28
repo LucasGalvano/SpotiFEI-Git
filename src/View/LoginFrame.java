@@ -1,5 +1,6 @@
 package View;
 
+import Control.LoginControl;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -8,6 +9,7 @@ import javax.swing.JTextField;
  *
  * @author Lucas Galvano
  */
+
 public class LoginFrame extends javax.swing.JFrame {
 
     /**
@@ -15,6 +17,7 @@ public class LoginFrame extends javax.swing.JFrame {
      */
     public LoginFrame() {
         initComponents();
+        c = new LoginControl(this);
     }
 
     
@@ -214,7 +217,8 @@ public class LoginFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_usuario_loginActionPerformed
 
     private void bt_cadastrar_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastrar_loginActionPerformed
-        // TODO add your handling code here:
+        c.loginUsuario();
+        this.setVisible(false);
     }//GEN-LAST:event_bt_cadastrar_loginActionPerformed
 
     private void bt_fazerLogin_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_fazerLogin_loginActionPerformed
@@ -256,6 +260,7 @@ public class LoginFrame extends javax.swing.JFrame {
 //        });
 //    }
 
+    private LoginControl c;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_cadastrar_login;
     private javax.swing.JButton bt_fazerLogin_login;

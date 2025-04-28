@@ -12,6 +12,10 @@ import Model.Usuario;
  */
 public class UsuariosDAO {
     private Connection conn;
+
+    public UsuariosDAO(Connection conn) {
+        this.conn = conn;
+    }
     
     public ResultSet consultar(Usuario usuario) throws SQLException{
         String sql = "select * from usuario where name = ? and password = ?";
@@ -24,7 +28,7 @@ public class UsuariosDAO {
     }
     
     public void atualizar(Usuario usuario) throws SQLException{
-        String sql = "insert into aluno (nome, usuario, senha) values ('"
+        String sql = "insert into usuario (name, password) values ('"
                       + usuario.getUsuario() + "', '"
                       + usuario.getSenha()   + "')";
         PreparedStatement statement = conn.prepareStatement(sql);
