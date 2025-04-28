@@ -1,5 +1,7 @@
 package spotifei;
-import DAO.Conexao;
+
+import View.LoginFrame;
+
 /**
  *
  * @author Lucas Galvano
@@ -7,9 +9,7 @@ import DAO.Conexao;
 public class SpotiFEI {
     public static void main(String[] args) {
         // TODO code application logic here
-        // Teste aqui (depois remova!)
-        System.out.println("Teste rápido:");
-        Conexao.getConnection();
-    }
-    
+        LoginFrame lf = new LoginFrame();
+        lf.setVisible(true);
+    }    
 }
