@@ -17,7 +17,7 @@ public class UsuariosDAO {
         this.conn = conn;
     }
     
-    public ResultSet consultar(Usuario usuario) throws SQLException{
+    public ResultSet consultarUsuario(Usuario usuario) throws SQLException{
         String sql = "select * from usuario where name = ? and password = ?";
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setString(1, usuario.getUsuario());
@@ -27,7 +27,7 @@ public class UsuariosDAO {
         return resultado;        
     }
     
-    public void inserir(Usuario usuario) throws SQLException{
+    public void inserirUsuario(Usuario usuario) throws SQLException{
         String sql = "insert into usuario (name, password) values ('"
                       + usuario.getUsuario() + "', '"
                       + usuario.getSenha()   + "')";

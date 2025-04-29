@@ -6,16 +6,16 @@ package Model;
  */
 public class Musica {
     private int id, duracaoSegundos;
-    private String nome, artista, genero;
+    private String nomeMusica, artista, genero;
     
     //Construtores
     public Musica() {
     }
 
-    public Musica(int id, int duracaoSegundos, String nome, String artista, String genero) {
+    public Musica(int id, int duracaoSegundos, String nomeMusica, String artista, String genero) {
         this.id = id;
         this.duracaoSegundos = duracaoSegundos;
-        this.nome = nome;
+        this.nomeMusica = nomeMusica;
         this.artista = artista;
         this.genero = genero;
     }
@@ -38,12 +38,12 @@ public class Musica {
         this.duracaoSegundos = duracaoSegundos;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomeMusica() {
+        return nomeMusica;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomeMusica(String nome) {
+        this.nomeMusica = nome;
     }
 
     public String getArtista() {
@@ -62,4 +62,10 @@ public class Musica {
         this.genero = genero;
     }
     
+    // Método p/ formatar tamanho da musica p min e seg
+    public String duracaoFormatada() {
+        int minutos = duracaoSegundos / 60;
+        int segundos = duracaoSegundos % 60;
+        return String.format("%d:%02d", minutos, segundos);
+    }
 }
