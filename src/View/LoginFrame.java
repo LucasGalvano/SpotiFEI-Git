@@ -224,7 +224,6 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void bt_fazerLogin_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_fazerLogin_loginActionPerformed
         c.loginUsuario();
-        this.setVisible(false);
     }//GEN-LAST:event_bt_fazerLogin_loginActionPerformed
 
     /**

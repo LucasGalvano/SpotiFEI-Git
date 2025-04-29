@@ -41,9 +41,13 @@ public class LoginControl {
             
             if(res.next()){
                 JOptionPane.showMessageDialog(view, "Login efetuado!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-                Usuario usuario2 = new Usuario(res.getString("usuario"), res.getString("senha"));
-                //TelaPrincipal tp = new TelaPrincipal(usuario2); ---- Tem que mudar o JFrame TelaPrincipal
-                //tp.setVisible(true);
+                Usuario usuarioAutenticado = new Usuario(res.getString("name"), res.getString("password"));
+
+                
+                // Fecha a tela de login e abre a principal
+                TelaPrincipal telaPrincipal = new TelaPrincipal(usuarioAutenticado);
+                telaPrincipal.setVisible(true);
+                view.dispose(); // fecha a tela de login
             } 
             else{
                 JOptionPane.showMessageDialog(view, "Login NÃO efetuado!", "Aviso", JOptionPane.ERROR_MESSAGE);

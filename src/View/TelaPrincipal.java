@@ -1,5 +1,7 @@
 package View;
 
+import Model.Usuario;
+
 /**
  *
  * @author Lucas Galvano
@@ -9,7 +11,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form TelaPrincipal
      */
-    public TelaPrincipal() {
+    public TelaPrincipal(Usuario usuario) {
         initComponents();
     }
 

@@ -4,6 +4,7 @@ import DAO.Conexao;
 import DAO.UsuariosDAO;
 import Model.Usuario;
 import View.CadastroFrame;
+import View.LoginFrame;
 import java.sql.Connection;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -31,6 +32,12 @@ public class CadastroControl {
             UsuariosDAO dao = new UsuariosDAO(conn);
             dao.inserir(usuarioSalvo);
             JOptionPane.showMessageDialog(view, "Usuario Cadastrado!","Aviso", JOptionPane.INFORMATION_MESSAGE);
+            
+
+            //Fecha a tela de cadastro p/ voltar a tela de login
+            LoginFrame loginFrame = new LoginFrame();
+            loginFrame.setVisible(true);
+            view.dispose();
         }
         catch (SQLException ex) {
             JOptionPane.showMessageDialog(view, "Usuário não cadastrado!","Erro", JOptionPane.ERROR_MESSAGE);        
