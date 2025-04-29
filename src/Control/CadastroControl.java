@@ -30,7 +30,7 @@ public class CadastroControl {
         try {
             Connection conn = conexao.getConnection();
             UsuariosDAO dao = new UsuariosDAO(conn);
-            dao.inserir(usuarioSalvo);
+            dao.inserirUsuario(usuarioSalvo);
             JOptionPane.showMessageDialog(view, "Usuario Cadastrado!","Aviso", JOptionPane.INFORMATION_MESSAGE);
             
 

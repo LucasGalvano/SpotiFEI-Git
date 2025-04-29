@@ -37,7 +37,7 @@ public class LoginControl {
             
             Connection conn = conexao.getConnection();
             UsuariosDAO dao = new UsuariosDAO(conn);
-            ResultSet res = dao.consultar(usuario);
+            ResultSet res = dao.consultarUsuario(usuario);
             
             if(res.next()){
                 JOptionPane.showMessageDialog(view, "Login efetuado!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
