@@ -25,7 +25,7 @@ public class LoginControl {
         this.view = view;
     }    
     
-    // função
+    // Métodos
     public void loginUsuario(){
         Usuario usuario = new Usuario(
             view.getTxt_usuario_login().getText(),

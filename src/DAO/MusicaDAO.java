@@ -31,9 +31,11 @@ public class MusicaDAO {
 
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
+                Time time = rs.getTime("duration"); // <- pega do banco
+                int duracaoSegundos = time.toLocalTime().toSecondOfDay(); // <- converte p/ int
                 resultados.add(new Musica(
                     rs.getInt("music_id"),
-                    rs.getInt("duration"),     
+                    duracaoSegundos,     
                     rs.getString("music_name"),
                     rs.getString("artist_name"),
                     rs.getString("genre")
