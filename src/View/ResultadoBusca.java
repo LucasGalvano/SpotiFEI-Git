@@ -19,12 +19,11 @@ public class ResultadoBusca extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        String[] colunas = {"ID", "Nome", "Artista", "Gênero", "Duração (s)"};
+        String[] colunas = {"Nome", "Artista", "Gênero", "Duração"};
         DefaultTableModel modelo = new DefaultTableModel(colunas, 0);
 
         for (Musica m : resultados) {
             Object[] row = {
-                m.getId(),
                 m.getNomeMusica(),
                 m.getArtista(),
                 m.getGenero(),

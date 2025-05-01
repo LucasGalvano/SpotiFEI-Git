@@ -17,6 +17,9 @@ public class MusicaDAO {
         this.conn = conn;
     }
     
+    
+    
+    // Métoods
     public List<Musica> buscarMusica(String termo) throws SQLException{
         List<Musica> resultados = new ArrayList<>();
         
@@ -43,5 +46,31 @@ public class MusicaDAO {
             }
         }
         return resultados;
+    }
+    
+    
+    public void curtirMusica(int musicId, int userId) throws SQLException{
+        String sql = "INSERT INTO liked_music (music_id, user_id, liked) " +
+                     "VALUES (?, ?, TRUE) " +
+                     "ON CONFLICT (music_id, user_id) DO UPDATE SET liked = TRUE";
+        
+        try(PreparedStatement stmt = conn.prepareStatement(sql)){
+            stmt.setInt(1, musicId);
+            stmt.setInt(2, userId);
+            stmt.executeUpdate();
+        }
+    }
+    
+    
+    public void descurtirMusica(int musicId, int userId) throws SQLException{
+        String sql = "INSERT INTO liked_music (music_id, user_id, liked) " +
+                     "VALUES (?, ?, FALSE) " +
+                     "ON CONFLICT (music_id, user_id) DO UPDATE SET liked = FALSE";
+        
+        try(PreparedStatement stmt = conn.prepareStatement(sql)){
+            stmt.setInt(1, musicId);
+            stmt.setInt(2, userId);
+            stmt.executeUpdate();
+        }
     }
 }

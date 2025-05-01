@@ -27,7 +27,7 @@ public class LoginControl {
     
     // Métodos
     public void loginUsuario(){
-        Usuario usuario = new Usuario(
+        Usuario usuario = new Usuario(     
             view.getTxt_usuario_login().getText(),
             view.getTxt_senha_login().getText()
         );
@@ -41,7 +41,9 @@ public class LoginControl {
             
             if(res.next()){
                 JOptionPane.showMessageDialog(view, "Login efetuado!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-                Usuario usuarioAutenticado = new Usuario(res.getString("name"), res.getString("password"));
+                Usuario usuarioAutenticado = new Usuario(res.getInt("user_id"), // Adição para evitar conflito no BD
+                                                         res.getString("name"),
+                                                         res.getString("password"));    
 
                 
                 // Fecha a tela de login e abre a principal
