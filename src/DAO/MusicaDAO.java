@@ -5,10 +5,13 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  *
  * @author Lucas Galvano
  */
+
+
 public class MusicaDAO {
     private Connection conn;
 
@@ -16,7 +19,10 @@ public class MusicaDAO {
     public MusicaDAO(Connection conn) {
         this.conn = conn;
     }
-    
+
+    public MusicaDAO() {
+    }
+
     
     
     // Métoods
@@ -72,5 +78,43 @@ public class MusicaDAO {
             stmt.setInt(2, userId);
             stmt.executeUpdate();
         }
+    }
+    
+    
+    public List<Musica> buscarMusicasAleatorias(int quantidade) {
+        List<Musica> musicas = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            Conexao conexao = new Conexao();
+            conn = conexao.getConnection();
+
+            String sql = "SELECT m.music_name, m.genre, m.duration, a.artist_name " +
+                         "FROM music m " +
+                         "JOIN artista a ON m.artist_id = a.artist_id";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, quantidade);
+            rs = stmt.executeQuery();
+
+            
+            while (rs.next()) {
+                Time time = rs.getTime("duration"); // <- pega do banco
+                int duracaoSegundos = time.toLocalTime().toSecondOfDay(); // <- converte p/ int
+                Musica musica = new Musica(
+                    rs.getInt("music_id"),
+                    duracaoSegundos,
+                    rs.getString("music_name"),
+                    rs.getString("artist_name"),
+                    rs.getString("genre")
+                );
+                musicas.add(musica);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return musicas;
     }
 }

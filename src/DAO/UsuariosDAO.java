@@ -6,10 +6,13 @@ import java.sql.SQLException;
 import java.sql.ResultSet;
 import Model.Usuario;
 
+
 /**
  *
  * @author Lucas Galvano
  */
+
+
 public class UsuariosDAO {
     private Connection conn;
 

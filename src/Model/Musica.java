@@ -1,9 +1,12 @@
 package Model;
 
+
 /**
  *
  * @author Lucas Galvano
  */
+
+
 public class Musica {
     private int id, duracaoSegundos;
     private String nomeMusica, artista, genero;

@@ -1,9 +1,12 @@
 package Model;
 
+
 /**
  *
  * @author Lucas Galvano
  */
+
+
 public class Usuario {
     private String usuario, senha;
     private int userId; // Adição para evitar conflitos de musicas curtidas e playlists no BD
