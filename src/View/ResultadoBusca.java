@@ -1,9 +1,11 @@
 package View;
 
+import DAO.MusicaDAO;
 import Model.Musica;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.util.List;
 
 
@@ -13,33 +15,52 @@ import java.util.List;
  */
 
 
-public class ResultadoBusca extends javax.swing.JFrame {
-    private JTable tabela;
-    private JScrollPane scrollPane;
+public class ResultadoBusca extends JFrame {
+    private JPanel painelPrincipal;
+    private MusicaDAO musicaDAO;
+    private int userId;
 
-    public ResultadoBusca(List<Musica> resultados) {
+    public ResultadoBusca(List<Musica> musicas, MusicaDAO dao, int userId) {
+        this.userId = userId;
+        this.musicaDAO = dao;
         setTitle("Resultado da Busca");
         setSize(600, 400);
-        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        String[] colunas = {"Nome", "Artista", "Gênero", "Duração"};
-        DefaultTableModel modelo = new DefaultTableModel(colunas, 0);
+        painelPrincipal = new JPanel();
+        painelPrincipal.setLayout(new BoxLayout(painelPrincipal, BoxLayout.Y_AXIS));
 
-        for (Musica m : resultados) {
-            Object[] row = {
-                m.getNomeMusica(),
-                m.getArtista(),
-                m.getGenero(),
-                m.duracaoFormatada()
-            };
-            modelo.addRow(row);
+        for (Musica m : musicas) {
+            JPanel linha = new JPanel(new FlowLayout(FlowLayout.LEFT));
+            JLabel info = new JLabel(m.getNomeMusica() + " - " + m.getArtista() + " [" + m.getGenero() + "]");
+            JButton botao = new JButton(m.isCurtida() ? "Descurtir" : "Curtir");
+
+            botao.addActionListener((ActionEvent e) -> {
+                try {
+                    if (m.isCurtida()) {
+                        musicaDAO.descurtirMusica(m.getId(), userId);
+                        m.setCurtida(false);
+                        botao.setText("Curtir");
+                    } else {
+                        musicaDAO.curtirMusica(m.getId(), userId);
+                        m.setCurtida(true);
+                        botao.setText("Descurtir");
+                    }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Erro ao atualizar curtida: " + ex.getMessage());
+                }
+            });
+
+            linha.add(info);
+            linha.add(botao);
+            painelPrincipal.add(linha);
         }
 
-        tabela = new JTable(modelo);
-        scrollPane = new JScrollPane(tabela);
-        add(scrollPane, BorderLayout.CENTER);
+        JScrollPane scroll = new JScrollPane(painelPrincipal);
+        add(scroll);
+        setVisible(true);
     }
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

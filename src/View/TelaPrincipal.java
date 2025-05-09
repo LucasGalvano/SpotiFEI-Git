@@ -1,10 +1,7 @@
 package View;
 
 import Control.ResultadoBuscaControl;
-import DAO.MusicaDAO;
-import Model.Musica;
 import Model.Usuario;
-import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -22,10 +19,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
      */
     public TelaPrincipal(Usuario usuario) {
         initComponents();
-        c = new ResultadoBuscaControl(this);
+        int userId = usuario.getUserId();
+        c = new ResultadoBuscaControl(this, userId);
         bt_buscar_home.addActionListener(e -> c.buscarMusicas());
-        
-        preencherSugestoesFixas();
     }
 
     

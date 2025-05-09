@@ -19,11 +19,12 @@ import javax.swing.JOptionPane;
  */
 public class ResultadoBuscaControl {
     private TelaPrincipal view;
-
+    private int userId;
     
     // Construtores
-    public ResultadoBuscaControl(TelaPrincipal view) {
+    public ResultadoBuscaControl(TelaPrincipal view, int userId) {
         this.view = view;
+        this.userId = userId;
     }
     
     
@@ -41,12 +42,12 @@ public class ResultadoBuscaControl {
             
             Connection conn = conexao.getConnection();
             MusicaDAO dao = new MusicaDAO(conn);
-            List<Musica> resultados = dao.buscarMusica(termo);
+            List<Musica> resultados = dao.buscarMusica(termo, userId);
 
             if (resultados.isEmpty()) {
                 JOptionPane.showMessageDialog(view, "Nenhuma música encontrada.", "Aviso", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                ResultadoBusca resultadoView = new ResultadoBusca(resultados);
+                ResultadoBusca resultadoView = new ResultadoBusca(resultados, dao, userId);
                 resultadoView.setVisible(true);
             }
 

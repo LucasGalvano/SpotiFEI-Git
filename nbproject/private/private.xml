@@ -5,9 +5,11 @@
         <group>
             <file>file:/C:/Users/NOTEBOOK/Documents/NetBeansProjects/SpotiFEI/src/View/TelaPrincipal.java</file>
             <file>file:/C:/Users/NOTEBOOK/Documents/NetBeansProjects/SpotiFEI/src/DAO/MusicaDAO.java</file>
-            <file>file:/C:/Users/NOTEBOOK/Documents/NetBeansProjects/SpotiFEI/src/DAO/UsuariosDAO.java</file>
-            <file>file:/C:/Users/NOTEBOOK/Documents/NetBeansProjects/SpotiFEI/src/Model/Usuario.java</file>
             <file>file:/C:/Users/NOTEBOOK/Documents/NetBeansProjects/SpotiFEI/src/Model/Musica.java</file>
+            <file>file:/C:/Users/NOTEBOOK/Documents/NetBeansProjects/SpotiFEI/src/View/ResultadoBusca.java</file>
+            <file>file:/C:/Users/NOTEBOOK/Documents/NetBeansProjects/SpotiFEI/src/Control/LoginControl.java</file>
+            <file>file:/C:/Users/NOTEBOOK/Documents/NetBeansProjects/SpotiFEI/src/DAO/Conexao.java</file>
+            <file>file:/C:/Users/NOTEBOOK/Documents/NetBeansProjects/SpotiFEI/src/spotifei/SpotiFEI.java</file>
         </group>
     </open-files>
 </project-private>

@@ -10,6 +10,7 @@ package Model;
 public class Musica {
     private int id, duracaoSegundos;
     private String nomeMusica, artista, genero;
+    private boolean curtida;
     
     //Construtores
     public Musica() {
@@ -63,6 +64,13 @@ public class Musica {
 
     public void setGenero(String genero) {
         this.genero = genero;
+    }
+    
+    public boolean isCurtida(){
+        return curtida; 
+    }
+    public void setCurtida(boolean curtida){
+        this.curtida = curtida;
     }
     
     // Método p/ formatar tamanho da musica p min e seg
