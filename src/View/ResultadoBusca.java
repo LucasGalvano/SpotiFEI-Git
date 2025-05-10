@@ -3,9 +3,9 @@ package View;
 import DAO.MusicaDAO;
 import Model.Musica;
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.sql.SQLException;
 import java.util.List;
 
 
@@ -46,7 +46,7 @@ public class ResultadoBusca extends JFrame {
                         m.setCurtida(true);
                         botao.setText("Descurtir");
                     }
-                } catch (Exception ex) {
+                } catch (SQLException ex) {
                     JOptionPane.showMessageDialog(this, "Erro ao atualizar curtida: " + ex.getMessage());
                 }
             });

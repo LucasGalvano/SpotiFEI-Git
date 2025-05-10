@@ -48,6 +48,7 @@ public class MusicaDAO {
                 );
                 musica.setCurtida(isMusicaCurtida(musica.getId(), userId));
                 resultados.add(musica);
+                registrarBusca(userId, musica.getId());
             }
         }
         return resultados;
@@ -78,7 +79,8 @@ public class MusicaDAO {
             stmt.executeUpdate();
         }
     }
-    
+      
+    // Confere se a música esta curtida
     public boolean isMusicaCurtida(int musicId, int userId) throws SQLException {
         String sql = "SELECT liked FROM liked_music WHERE music_id = ? AND user_id = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -89,4 +91,104 @@ public class MusicaDAO {
         }
         return false;
     }
+    
+    
+    //Registra as buscas recentes (10)
+    public void registrarBusca(int userId, int musicId) throws SQLException {
+        String sql = "INSERT INTO search_history (user_id, music_id) VALUES (?, ?)";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, userId);
+            stmt.setInt(2, musicId);
+            stmt.executeUpdate();
+        }
+    }
+
+    
+    // Registra as ultimas 10 musicas curtidas
+    public List<Musica> buscarCurtidas(int userId) throws SQLException {
+        List<Musica> musicas = new ArrayList<>();
+        String sql = "SELECT m.music_id, m.music_name, a.artist_name, m.genre, m.duration " +
+                     "FROM liked_music l " +
+                     "JOIN music m ON l.music_id = m.music_id " +
+                     "JOIN artista a ON m.artist_id = a.artist_id " +
+                     "WHERE l.user_id = ? AND l.liked = true " +
+                     "ORDER BY l.music_id DESC LIMIT 10";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, userId);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Time time = rs.getTime("duration");
+                int duracaoSegundos = time.toLocalTime().toSecondOfDay();
+                Musica musica = new Musica(
+                    rs.getInt("music_id"),
+                    duracaoSegundos,
+                    rs.getString("music_name"),
+                    rs.getString("artist_name"),
+                    rs.getString("genre")
+                );
+                musica.setCurtida(true);
+                musicas.add(musica);
+            }
+        }
+        return musicas;
+    }
+    
+
+    // Registra as ultimas 10 musicas descurtidas
+    public List<Musica> buscarDescurtidas(int userId) throws SQLException {
+        List<Musica> musicas = new ArrayList<>();
+        String sql = "SELECT m.music_id, m.music_name, a.artist_name, m.genre, m.duration " +
+                     "FROM liked_music l " +
+                     "JOIN music m ON l.music_id = m.music_id " +
+                     "JOIN artista a ON m.artist_id = a.artist_id " +
+                     "WHERE l.user_id = ? AND l.liked = false " +
+                     "ORDER BY l.music_id DESC LIMIT 10";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, userId);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Time time = rs.getTime("duration");
+                int duracaoSegundos = time.toLocalTime().toSecondOfDay();
+                Musica musica = new Musica(
+                    rs.getInt("music_id"),
+                    duracaoSegundos,
+                    rs.getString("music_name"),
+                    rs.getString("artist_name"),
+                    rs.getString("genre")
+                );
+                musica.setCurtida(false);
+                musicas.add(musica);
+            }
+        }
+        return musicas;
+    }
+    
+    
+    // Procura as ultimas buscas feitas pelo user
+    public List<Musica> procurarBuscas(int userId) throws SQLException{
+        List<Musica> musicas = new ArrayList<>();
+        String sql = "SELECT m.music_id, m.music_name, a.artist_name, m.genre, m.duration " +
+                     "FROM search_history h " +
+                     "JOIN music m ON h.music_id = m.music_id " +
+                     "JOIN artista a ON m.artist_id = a.artist_id " +
+                     "WHERE h.user_id = ? " +
+                     "ORDER BY h.search_id DESC LIMIT 10";
+        try(PreparedStatement stmt = conn.prepareStatement(sql)){
+            stmt.setInt(1, userId);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                Time time = rs.getTime("duration");
+                int duracaoSegundos = time.toLocalTime().toSecondOfDay();
+                Musica musica = new Musica(
+                        rs.getInt("music_id"),
+                        duracaoSegundos,
+                        rs.getString("music_name"),
+                        rs.getString("artist_name"),
+                        rs.getString("genre")
+                );
+                musicas.add(musica);
+            }
+        }
+        return musicas;
+    }   
 }

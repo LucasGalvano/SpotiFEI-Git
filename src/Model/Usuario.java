@@ -22,7 +22,7 @@ public class Usuario {
     }
     
     
-    public Usuario(int userId,String usuario, String senha) { //  Novo contrutor p/ o login autenticado add o id p/ evitar conflitos
+    public Usuario(int userId, String usuario, String senha) { //  Novo contrutor p/ o login autenticado add o id p/ evitar conflitos
         this.userId = userId;
         this.usuario = usuario;
         this.senha = senha;
