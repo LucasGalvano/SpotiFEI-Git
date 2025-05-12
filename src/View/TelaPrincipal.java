@@ -1,6 +1,7 @@
 package View;
 
 import Control.HistoricoControl;
+import Control.MusicasCurtidasControl;
 import Control.ResultadoBuscaControl;
 import Model.Usuario;
 import javax.swing.JButton;
@@ -24,9 +25,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
         c = new ResultadoBuscaControl(this, userId);
         hc = new HistoricoControl(this, userId);
-        
+        mcc = new MusicasCurtidasControl(this, userId);
+
         bt_buscar_home.addActionListener(e -> c.buscarMusicas());
         bt_historico_home.addActionListener(e -> hc.abrirHistorico());
+        bt_musicas_curtidas_home.addActionListener(e -> mcc.abrirMusicasCurtidas());
     }
 
     
@@ -384,6 +387,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     private ResultadoBuscaControl c;
     private HistoricoControl hc;
+    private MusicasCurtidasControl mcc;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_buscar_home;
     private javax.swing.JButton bt_curtir_home;
