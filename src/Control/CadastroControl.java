@@ -23,7 +23,7 @@ public class CadastroControl {
     public void salvarUsuario(){
         String usuario = view.getTxt_usuario_cadastro().getText();
         String senha = view.getTxt_senha_cadastro().getText();
-        Usuario usuarioSalvo = new Usuario(usuario,senha);   
+        Usuario usuarioSalvo = new Usuario(0, usuario,senha);   
         
         Conexao conexao = new Conexao();   
         

@@ -23,8 +23,8 @@ public class UsuariosDAO {
     public ResultSet consultarUsuario(Usuario usuario) throws SQLException{
         String sql = "select * from usuario where name = ? and password = ?";
         PreparedStatement statement = conn.prepareStatement(sql);
-        statement.setString(1, usuario.getUsuario());
-        statement.setString(2, usuario.getSenha());
+        statement.setString(1, usuario.getUsername());
+        statement.setString(2, usuario.getPassword());
         statement.execute();   
         ResultSet resultado = statement.getResultSet();
         return resultado;        
@@ -32,8 +32,8 @@ public class UsuariosDAO {
     
     public void inserirUsuario(Usuario usuario) throws SQLException{
         String sql = "insert into usuario (name, password) values ('"
-                      + usuario.getUsuario() + "', '"
-                      + usuario.getSenha()   + "')";
+                      + usuario.getUsername() + "', '"
+                      + usuario.getPassword()   + "')";
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.execute();
         conn.close();

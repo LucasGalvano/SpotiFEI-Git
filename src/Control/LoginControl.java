@@ -27,7 +27,7 @@ public class LoginControl {
     
     // Métodos
     public void loginUsuario(){
-        Usuario usuario = new Usuario(     
+        Usuario usuario = new Usuario(0,     
             view.getTxt_usuario_login().getText(),
             view.getTxt_senha_login().getText()
         );
