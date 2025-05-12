@@ -1,5 +1,6 @@
 package View;
 
+import DAO.HistoricoDAO;
 import DAO.MusicaDAO;
 import Model.Musica;
 import java.awt.BorderLayout;
@@ -17,14 +18,16 @@ import javax.swing.JScrollPane;
  * @author Lucas Galvano
  */
 public class HistoricoFrame extends javax.swing.JFrame {
-    private MusicaDAO dao;
+    private MusicaDAO musicaDAO;
+    private HistoricoDAO historicoDAO;
     private int userId; 
     /**
      * Creates new form HistoricoFrame
      */
-    public HistoricoFrame(MusicaDAO dao, int userId) {
+    public HistoricoFrame(MusicaDAO musicaDAO, HistoricoDAO historicoDAO, int userId) {
         initComponents();
-        this.dao = dao;
+        this.musicaDAO = musicaDAO;
+        this.historicoDAO = historicoDAO;
         this.userId = userId;
 
         setTitle("Histórico do Usuário");
@@ -78,11 +81,11 @@ public class HistoricoFrame extends javax.swing.JFrame {
 
             try {
                 if (tipo.equals("curtidas")) {
-                    musicas = dao.buscarCurtidas(userId);
+                    musicas = musicaDAO.buscarCurtidas(userId);
                 } else if (tipo.equals("descurtidas")) {
-                    musicas = dao.buscarDescurtidas(userId);
+                    musicas = musicaDAO.buscarDescurtidas(userId);
                 } else {
-                    musicas = dao.procurarBuscas(userId);
+                    musicas = historicoDAO.procurarBuscas(userId);
                 }
 
                 for (Musica m : musicas) {

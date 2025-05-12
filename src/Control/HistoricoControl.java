@@ -1,6 +1,7 @@
 package Control;
 
 import DAO.Conexao;
+import DAO.HistoricoDAO;
 import java.sql.Connection;
 import DAO.MusicaDAO;
 import View.HistoricoFrame;
@@ -29,8 +30,9 @@ public class HistoricoControl {
         
         try{
             Connection conn = conexao.getConnection();
-            MusicaDAO dao = new MusicaDAO(conn);
-            HistoricoFrame historico = new HistoricoFrame(dao, userId);
+            MusicaDAO musicaDAO = new MusicaDAO(conn);
+            HistoricoDAO historicoDAO = new HistoricoDAO(conn);
+            HistoricoFrame historico = new HistoricoFrame(musicaDAO, historicoDAO, userId);
             historico.setVisible(true);
         }catch(SQLException e){
             JOptionPane.showMessageDialog(view, "Erro ao carregar histórico: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
