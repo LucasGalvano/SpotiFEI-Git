@@ -3,6 +3,7 @@ package Control;
 
 import DAO.Conexao;
 import DAO.MusicaDAO;
+import DAO.PlaylistDAO;
 import Model.Musica;
 import View.ResultadoBusca;
 import View.TelaPrincipal;
@@ -41,13 +42,14 @@ public class ResultadoBuscaControl {
         try {
             
             Connection conn = conexao.getConnection();
-            MusicaDAO dao = new MusicaDAO(conn);
-            List<Musica> resultados = dao.buscarMusica(termo, userId);
+            MusicaDAO musicaDAO = new MusicaDAO(conn);
+            PlaylistDAO playlistDAO = new PlaylistDAO(conn);
+            List<Musica> resultados = musicaDAO.buscarMusica(termo, userId);
 
             if (resultados.isEmpty()) {
                 JOptionPane.showMessageDialog(view, "Nenhuma música encontrada.", "Aviso", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                ResultadoBusca resultadoView = new ResultadoBusca(resultados, dao, userId);
+                ResultadoBusca resultadoView = new ResultadoBusca(resultados, musicaDAO, playlistDAO, userId);
                 resultadoView.setVisible(true);
             }
 

@@ -3,12 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/NOTEBOOK/Documents/NetBeansProjects/SpotiFEI/src/View/MusicasCurtidasFrame.java</file>
-            <file>file:/C:/Users/NOTEBOOK/Documents/NetBeansProjects/SpotiFEI/src/Control/MusicasCurtidasControl.java</file>
+            <file>file:/C:/Users/NOTEBOOK/Documents/NetBeansProjects/SpotiFEI/src/Model/Playlist.java</file>
+            <file>file:/C:/Users/NOTEBOOK/Documents/NetBeansProjects/SpotiFEI/src/DAO/PlaylistDAO.java</file>
+            <file>file:/C:/Users/NOTEBOOK/Documents/NetBeansProjects/SpotiFEI/src/View/PlaylistFrame.java</file>
+            <file>file:/C:/Users/NOTEBOOK/Documents/NetBeansProjects/SpotiFEI/src/View/ResultadoBusca.java</file>
             <file>file:/C:/Users/NOTEBOOK/Documents/NetBeansProjects/SpotiFEI/src/View/TelaPrincipal.java</file>
-            <file>file:/C:/Users/NOTEBOOK/Documents/NetBeansProjects/SpotiFEI/src/Control/LoginControl.java</file>
-            <file>file:/C:/Users/NOTEBOOK/Documents/NetBeansProjects/SpotiFEI/src/DAO/MusicaDAO.java</file>
-            <file>file:/C:/Users/NOTEBOOK/Documents/NetBeansProjects/SpotiFEI/src/Control/ResultadoBuscaControl.java</file>
+            <file>file:/C:/Users/NOTEBOOK/Documents/NetBeansProjects/SpotiFEI/src/Control/PlaylistControl.java</file>
         </group>
     </open-files>
 </project-private>
