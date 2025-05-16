@@ -26,36 +26,37 @@ public class LoginControl {
     }    
     
     // Métodos
-    public void loginUsuario(){
-        Usuario usuario = new Usuario(0,     
-            view.getTxt_usuario_login().getText(),
-            view.getTxt_senha_login().getText()
-        );
-        
+    public void loginUsuario() {
+        String username = view.getTxt_usuario_login().getText();
+        String password = view.getTxt_senha_login().getText();
+
         Conexao conexao = new Conexao();
-        try{
-            
+        try {
             Connection conn = conexao.getConnection();
             UsuariosDAO dao = new UsuariosDAO(conn);
-            ResultSet res = dao.consultarUsuario(usuario);
-            
-            if(res.next()){
-                JOptionPane.showMessageDialog(view, "Login efetuado!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-                Usuario usuarioAutenticado = new Usuario(res.getInt("user_id"), // Adição para evitar conflito no BD
-                                                         res.getString("name"),
-                                                         res.getString("password"));    
+            ResultSet res = dao.consultarUsuario(new Usuario(0, username, password));
+
+            if (res.next()) {
+                Usuario usuarioAutenticado = new Usuario(
+                    res.getInt("user_id"),
+                    res.getString("name"),
+                    res.getString("password")
+                );
 
                 
-                // Fecha a tela de login e abre a principal
-                TelaPrincipal telaPrincipal = new TelaPrincipal(usuarioAutenticado);
-                telaPrincipal.setVisible(true);
-                view.dispose(); // fecha a tela de login
-            } 
-            else{
-                JOptionPane.showMessageDialog(view, "Login NÃO efetuado!", "Aviso", JOptionPane.ERROR_MESSAGE);
+                if (usuarioAutenticado.autenticar(username, password)) {
+                    JOptionPane.showMessageDialog(view, "Login efetuado!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                    TelaPrincipal telaPrincipal = new TelaPrincipal(usuarioAutenticado);
+                    telaPrincipal.setVisible(true);
+                    view.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(view, "Username ou senha incorretos!", "Erro", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(view, "Usuário não encontrado!", "Erro", JOptionPane.ERROR_MESSAGE);
             }
-        }catch(SQLException e){    
-            JOptionPane.showMessageDialog(view, "Erro de conexão!", "Aviso", JOptionPane.ERROR_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(view, "Erro de conexão: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
-    }
+}
 }
