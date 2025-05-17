@@ -4,6 +4,7 @@ import Control.HistoricoControl;
 import Control.MusicasCurtidasControl;
 import Control.PlaylistControl;
 import Control.ResultadoBuscaControl;
+import Control.TelaPrincipalControl;
 import Model.Usuario;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -17,9 +18,6 @@ import javax.swing.JTextField;
 
 
 public class TelaPrincipal extends javax.swing.JFrame {
-    /**
-     * Creates new form TelaPrincipal
-     */
     public TelaPrincipal(Usuario usuario) {
         initComponents();
         int userId = usuario.getUserId();
@@ -28,11 +26,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         hc = new HistoricoControl(this, userId);
         mcc = new MusicasCurtidasControl(this, userId);
         pc = new PlaylistControl(this, userId);
+        tpc = new TelaPrincipalControl(this, userId);
 
-        bt_buscar_home.addActionListener(e -> c.buscarMusicas());
+        bt_buscar_home.addActionListener(e -> c.buscarMusicas());   
         bt_historico_home.addActionListener(e -> hc.abrirHistorico());
         bt_musicas_curtidas_home.addActionListener(e -> mcc.abrirMusicasCurtidas());
         bt_playlist_home.addActionListener(e-> pc.abrirPlaylists());
+        
+        tpc.carregarMusicasAleatorias();
     }
 
     
@@ -116,6 +117,54 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public void setBt_playlist_home(JButton bt_playlist_home) {
         this.bt_playlist_home = bt_playlist_home;
     }
+
+    public JLabel getLbl_nome_artista() {
+        return lbl_nome_artista;
+    }
+
+    public void setLbl_nome_artista(JLabel lbl_nome_artista) {
+        this.lbl_nome_artista = lbl_nome_artista;
+    }
+
+    public JLabel getLbl_nome_artista2() {
+        return lbl_nome_artista2;
+    }
+
+    public void setLbl_nome_artista2(JLabel lbl_nome_artista2) {
+        this.lbl_nome_artista2 = lbl_nome_artista2;
+    }
+
+    public JLabel getLbl_nome_artista3() {
+        return lbl_nome_artista3;
+    }
+
+    public void setLbl_nome_artista3(JLabel lbl_nome_artista3) {
+        this.lbl_nome_artista3 = lbl_nome_artista3;
+    }
+
+    public JLabel getLbl_nome_musica() {
+        return lbl_nome_musica;
+    }
+
+    public void setLbl_nome_musica(JLabel lbl_nome_musica) {
+        this.lbl_nome_musica = lbl_nome_musica;
+    }
+
+    public JLabel getLbl_nome_musica2() {
+        return lbl_nome_musica2;
+    }
+
+    public void setLbl_nome_musica2(JLabel lbl_nome_musica2) {
+        this.lbl_nome_musica2 = lbl_nome_musica2;
+    }
+
+    public JLabel getLbl_nome_musica3() {
+        return lbl_nome_musica3;
+    }
+
+    public void setLbl_nome_musica3(JLabel lbl_nome_musica3) {
+        this.lbl_nome_musica3 = lbl_nome_musica3;
+    }
     
     
     @SuppressWarnings(value = "unchecked")
@@ -146,6 +195,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lbl_nome_musica3 = new javax.swing.JLabel();
         lbl_nome_artista3 = new javax.swing.JLabel();
         bt_play_home3 = new javax.swing.JButton();
+        lbl_musicaAtual = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -207,7 +257,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(musicaItemPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbl_nome_musica)
-                .addGap(180, 180, 180)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbl_nome_artista)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(bt_play_home)
@@ -316,6 +366,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        lbl_musicaAtual.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -325,6 +377,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lbl_tocando_agora)
+                        .addGap(18, 18, 18)
+                        .addComponent(lbl_musicaAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(bt_curtir_home))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -372,7 +426,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(bt_playlist_home, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_tocando_agora, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbl_tocando_agora)
+                        .addComponent(lbl_musicaAtual))
                     .addComponent(bt_curtir_home, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
@@ -392,6 +448,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private HistoricoControl hc;
     private MusicasCurtidasControl mcc;
     private PlaylistControl pc;
+    private TelaPrincipalControl tpc;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_buscar_home;
     private javax.swing.JButton bt_curtir_home;
@@ -404,6 +461,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_FEI_home;
     private javax.swing.JLabel lbl_SpotiFEI_home;
     private javax.swing.JLabel lbl_descubra_novas_musicas;
+    private javax.swing.JLabel lbl_musicaAtual;
     private javax.swing.JLabel lbl_nome_artista;
     private javax.swing.JLabel lbl_nome_artista2;
     private javax.swing.JLabel lbl_nome_artista3;

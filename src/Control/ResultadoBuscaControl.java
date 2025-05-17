@@ -7,7 +7,6 @@ import DAO.PlaylistDAO;
 import Model.Musica;
 import View.ResultadoBusca;
 import View.TelaPrincipal;
-import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;

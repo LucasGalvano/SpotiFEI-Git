@@ -151,5 +151,36 @@ public class MusicaDAO {
             }
         }
         return musicas;
-    }   
+    }  
+    
+    
+    // Busca músicas aleatórias no BD para exibir na tela principal
+    public List<Musica> musicasAleatorias(int quantidade) throws SQLException{
+        List<Musica> musicaAleatoria = new ArrayList<>();
+        
+        String sql = "SELECT m.music_id, m.music_name, m.genre, m.duration, a.artist_name " +
+                    "FROM music m " +
+                    "JOIN artista a ON m.artist_id = a.artist_id " +
+                    "ORDER BY RANDOM() LIMIT ?";
+        
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, quantidade);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Time time = rs.getTime("duration");
+                int duracaoSegundos = time.toLocalTime().toSecondOfDay();
+                Musica musica = new Musica(
+                    rs.getInt("music_id"),
+                    duracaoSegundos,
+                    rs.getString("music_name"),
+                    rs.getString("artist_name"),
+                    rs.getString("genre")
+                );
+                musica.setCurtida(false);
+                musicaAleatoria.add(musica);
+            }
+        }
+        return musicaAleatoria;
+    }
+    
 }
