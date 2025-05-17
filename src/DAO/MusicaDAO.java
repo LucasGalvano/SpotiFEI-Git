@@ -159,9 +159,9 @@ public class MusicaDAO {
         List<Musica> musicaAleatoria = new ArrayList<>();
         
         String sql = "SELECT m.music_id, m.music_name, m.genre, m.duration, a.artist_name " +
-                    "FROM music m " +
-                    "JOIN artista a ON m.artist_id = a.artist_id " +
-                    "ORDER BY RANDOM() LIMIT ?";
+                     "FROM music m " +
+                     "JOIN artista a ON m.artist_id = a.artist_id " +
+                     "ORDER BY RANDOM() LIMIT ?";
         
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, quantidade);

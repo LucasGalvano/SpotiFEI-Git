@@ -33,6 +33,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         bt_musicas_curtidas_home.addActionListener(e -> mcc.abrirMusicasCurtidas());
         bt_playlist_home.addActionListener(e-> pc.abrirPlaylists());
         
+        bt_play_home.addActionListener(e -> lbl_musicaAtual.setText(lbl_nome_musica.getText()));
+        bt_play_home2.addActionListener(e -> lbl_musicaAtual.setText(lbl_nome_musica2.getText()));
+        bt_play_home3.addActionListener(e -> lbl_musicaAtual.setText(lbl_nome_musica3.getText()));
+        
         tpc.carregarMusicasAleatorias();
     }
 
@@ -291,7 +295,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(musicaItemPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbl_nome_musica2)
-                .addGap(179, 179, 179)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbl_nome_artista2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(bt_play_home2)
@@ -325,7 +329,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(musicaItemPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbl_nome_musica3)
-                .addGap(181, 181, 181)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbl_nome_artista3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(bt_play_home3)
@@ -366,7 +370,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        lbl_musicaAtual.setText("jLabel1");
+        lbl_musicaAtual.setText("Nenhuma música tocando");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

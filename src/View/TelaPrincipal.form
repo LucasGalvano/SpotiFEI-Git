@@ -303,7 +303,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lbl_nome_musica2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="179" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="lbl_nome_artista2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="bt_play_home2" min="-2" max="-2" attributes="0"/>
@@ -366,7 +366,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lbl_nome_musica3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="181" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="lbl_nome_artista3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="bt_play_home3" min="-2" max="-2" attributes="0"/>
@@ -416,7 +416,7 @@
     </Container>
     <Component class="javax.swing.JLabel" name="lbl_musicaAtual">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel1"/>
+        <Property name="text" type="java.lang.String" value="Nenhuma m&#xfa;sica tocando"/>
       </Properties>
     </Component>
   </SubComponents>
