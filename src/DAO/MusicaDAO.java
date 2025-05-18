@@ -46,10 +46,10 @@ public class MusicaDAO {
                     rs.getString("artist_name"),
                     rs.getString("genre")
                 );
-                musica.setCurtida(isMusicaCurtida(musica.getId(), userId));
+                musica.setCurtida(isMusicaCurtida(musica.getMusicaId(), userId));
                 resultados.add(musica);
                 HistoricoDAO historicoDAO = new HistoricoDAO(conn);
-                historicoDAO.registrarBusca(userId, musica.getId());
+                historicoDAO.registrarBusca(userId, musica.getMusicaId());
             }
         }
         return resultados;

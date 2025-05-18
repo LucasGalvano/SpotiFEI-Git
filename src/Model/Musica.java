@@ -26,11 +26,11 @@ public class Musica {
     
     
     // Getters e Setters
-    public int getId() {
+    public int getMusicaId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setMusicaId(int id) {
         this.id = id;
     }
 

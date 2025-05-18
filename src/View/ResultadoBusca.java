@@ -42,11 +42,11 @@ public class ResultadoBusca extends JFrame {
             bt_curtir_descurtir.addActionListener(e -> {
                 try {
                     if (musica.isCurtida()) {
-                        musicaDAO.descurtirMusica(musica.getId(), userId);
+                        musicaDAO.descurtirMusica(musica.getMusicaId(), userId);
                         musica.setCurtida(false);
                         bt_curtir_descurtir.setText("Curtir");
                     } else {
-                        musicaDAO.curtirMusica(musica.getId(), userId);
+                        musicaDAO.curtirMusica(musica.getMusicaId(), userId);
                         musica.setCurtida(true);
                         bt_curtir_descurtir.setText("Descurtir");
                     }
@@ -72,7 +72,7 @@ public class ResultadoBusca extends JFrame {
                     if (selecionada != null) {
                         for (Playlist p : playlists) {
                             if (p.getNomePlaylist().equals(selecionada)) {
-                                playlistDAO.adicionarMusicaNaPlaylist(p.getPlaylistId(), musica.getId());
+                                playlistDAO.adicionarMusicaNaPlaylist(p.getPlaylistId(), musica.getMusicaId());
                                 JOptionPane.showMessageDialog(this, "Música adicionada!");
                                 break;
                             }
