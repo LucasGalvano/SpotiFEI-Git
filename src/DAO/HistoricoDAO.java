@@ -27,7 +27,7 @@ public class HistoricoDAO {
                      "JOIN music m ON h.music_id = m.music_id " +
                      "JOIN artista a ON m.artist_id = a.artist_id " +
                      "WHERE h.user_id = ? " +
-                     "ORDER BY h.search_id DESC LIMIT 10";
+                     "ORDER BY h.data_busca DESC LIMIT 10";
         try(PreparedStatement stmt = conn.prepareStatement(sql)){
             stmt.setInt(1, userId);
             ResultSet rs = stmt.executeQuery();
@@ -50,11 +50,13 @@ public class HistoricoDAO {
     
     //Registra as buscas recentes (10)
     public void registrarBusca(int userId, int musicId) throws SQLException {
-        String sql = "INSERT INTO search_history (user_id, music_id) VALUES (?, ?)";
-        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, userId);
-            stmt.setInt(2, musicId);
-            stmt.executeUpdate();
-        }
-    }    
+        String sql = "INSERT INTO search_history (user_id, music_id, data_busca) " +
+                     "VALUES (?, ?, CURRENT_TIMESTAMP) " +
+                     "ON CONFLICT (user_id, music_id)" +
+                     "DO UPDATE SET data_busca = CURRENT_TIMESTAMP";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setInt(1, userId);
+        stmt.setInt(2, musicId);
+        stmt.executeUpdate();
+    }   
 }
