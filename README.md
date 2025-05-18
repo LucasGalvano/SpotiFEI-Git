@@ -19,47 +19,80 @@
 
 ## 🚀 Funcionalidades
 
-### 1. Cadastro e Login
-- O usuário pode se cadastrar informando nome e senha.
-- A senha é validada no login, e os dados são verificados via banco PostgreSQL.
-- Após login, o usuário acessa a TelaPrincipal com todas as opções disponíveis.
+### 1. Tela Principal
+- Exibe **3 sugestões aleatórias de músicas** ao abrir.
+- Permite tocar, curtir, buscar e navegar.
+- Botão “Curtir” registra a música atual como curtida.
 
-### 2. Busca de Músicas
-- Pesquisa dinâmica por nome de música, nome do artista ou gênero.
-- Exibe os resultados com botões de “Curtir/Descurtir” e “Adicionar à Playlist”.
+### 2. Buscar Músicas
+- Busca por nome, gênero ou artista.
+- Resultados exibidos com botões:
+  - **Curtir/Descurtir**
+  - **Adicionar à Playlist**
+- Armazena no histórico do usuário.
 
-### 3. Curtir/Descurtir Músicas
-- Permite marcar músicas como curtidas ou descurtidas.
-- O status é salvo no banco e refletido automaticamente na interface.
+### 3. Histórico
+- Exibe as últimas 10:
+  - Músicas buscadas
+  - Músicas curtidas
+  - Músicas descurtidas
 
-### 4. Histórico do Usuário
-- Exibe as últimas 10 músicas buscadas, curtidas e descurtidas.
+### 4. Músicas Curtidas
+- Mostra as últimas 10 músicas curtidas.
 
-### 5. Gerenciamento de Playlists
-- Criar, visualizar e excluir playlists personalizadas.
-- Cada usuário gerencia suas próprias playlists.
-- As músicas adicionadas a uma playlist são salvas em uma tabela de relacionamento.
+### 5. Playlists
+- Criar e excluir playlists
+- Adicionar músicas diretamente da tela de busca
+- Ver músicas de cada playlist
 
-## 🛠️ Como Executar o Projeto
+---
 
-### Pré-requisitos:
-- Java 17 ou superior
-- PostgreSQL instalado
-- IDE Java (NetBeans, IntelliJ, Eclipse)
+## 🧱 Estrutura do Banco de Dados (MER)
 
-### Passos para execução:
-1. Clone o repositório:
-   `git clone https://github.com/LucasGalvano/SpotiFEI-Git.git`
+O banco segue este modelo:
 
-2. Configure o banco:
-   - Execute o script SQL disponível na pasta `/database`.
-   - Atualize as credenciais no arquivo `Conexao.java`.
+- `usuario (user_id, name, password)`
+- `artista (artist_id, artist_name)`
+- `music (music_id, music_name, genre, duration, artist_id)`
+- `playlist (playlist_id, playlist_name, user_id)`
+- `playlist_music (playlist_id, music_id)`
+- `liked_music (user_id, music_id, liked)`
+- `search_history (user_id, music_id, data_busca)`
 
-3. Compile e execute:
-   - Execute `LoginFrame.java` como aplicação.
-   - Faça login ou crie um novo usuário para começar.
+**Relações:**
+- Um artista possui várias músicas.
+- Um usuário pode ter várias playlists e músicas curtidas.
+- As interações de buscar são registradas com `timestamp`.
 
- ## 👨‍💻 Autor
+---
+
+## 🧠 Arquitetura MVC + DAO
+
+Este projeto adota o padrão **MVC** com extensão **DAO**:
+
+- **Model**: Classes de negócio (Usuario, Musica, Playlist)
+- **View**: Telas Java Swing (TelaPrincipal, ResultadoBusca, etc)
+- **Control**: Lógica de interação e manipulação da UI
+- **DAO**: Responsável por interações com o banco (inserir, buscar, curtir, etc)
+
+---
+
+## 🛠 Como Executar
+
+### Pré-requisitos
+- Java 11 ou superior
+- PostgreSQL 13+
+- IDE com suporte a Java Swing (NetBeans, IntelliJ, Eclipse)
+
+### Configuração do Banco de Dados
+> ⚠️ A conexão é feita via JDBC. Edite o arquivo `Conexao.java` para usar seu usuário e senha local:
+
+```java
+DriverManager.getConnection("jdbc:postgresql://localhost:5432/BD-SpotFEI", "seu_usuario", "sua_senha");
+```
+
+---
+
+## 👨‍💻 Autor
 Lucas Galvano de Paula  
 Desenvolvido como parte do curso de Arquitetura De Software e Programação Orientada a Objetos – Centro Universitário FEI
-
