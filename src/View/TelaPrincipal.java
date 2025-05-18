@@ -211,6 +211,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lbl_musicaAtual = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(51, 51, 51));
 
         lbl_SpotiFEI_home.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         lbl_SpotiFEI_home.setForeground(new java.awt.Color(0, 102, 0));
@@ -222,6 +223,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         bt_buscar_home.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         bt_buscar_home.setText("Buscar");
+        bt_buscar_home.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         txt_busca_home.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -233,18 +235,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lbl_tocando_agora.setText("Tocando agora:");
 
         bt_curtir_home.setText("Curtir");
+        bt_curtir_home.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         lbl_descubra_novas_musicas.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         lbl_descubra_novas_musicas.setText("Descubra novas músicas!");
 
         bt_playlist_home.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         bt_playlist_home.setText("Playlist");
+        bt_playlist_home.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         bt_musicas_curtidas_home.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         bt_musicas_curtidas_home.setText("Músicas Curtidas");
+        bt_musicas_curtidas_home.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         bt_historico_home.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         bt_historico_home.setText("Histórico");
+        bt_historico_home.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_historico_home.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_historico_homeActionPerformed(evt);

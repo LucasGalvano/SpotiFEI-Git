@@ -101,7 +101,7 @@ public class LoginFrame extends javax.swing.JFrame {
         bt_fazerLogin_login = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(0, 0, 0));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         lbl_SpotiFEI_login.setFont(new java.awt.Font("Verdana", 1, 48)); // NOI18N
         lbl_SpotiFEI_login.setForeground(new java.awt.Color(51, 102, 0));
@@ -132,6 +132,7 @@ public class LoginFrame extends javax.swing.JFrame {
         bt_cadastrar_login.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         bt_cadastrar_login.setForeground(new java.awt.Color(0, 102, 0));
         bt_cadastrar_login.setText("Cadastrar-se");
+        bt_cadastrar_login.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_cadastrar_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_cadastrar_loginActionPerformed(evt);
@@ -141,6 +142,7 @@ public class LoginFrame extends javax.swing.JFrame {
         bt_fazerLogin_login.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         bt_fazerLogin_login.setForeground(new java.awt.Color(0, 102, 0));
         bt_fazerLogin_login.setText("Fazer Login");
+        bt_fazerLogin_login.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_fazerLogin_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_fazerLogin_loginActionPerformed(evt);

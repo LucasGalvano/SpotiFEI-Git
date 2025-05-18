@@ -31,13 +31,21 @@ public class ResultadoBusca extends JFrame {
 
         setTitle("Resultados da Busca");
         setSize(600, 400);
-        setLayout(new GridLayout(resultados.size(), 1));
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        JPanel contentPanel = new JPanel();
+        contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
 
         for (Musica musica : resultados) {
-            JPanel painel = new JPanel(new FlowLayout());
+            JPanel painel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+            painel.setBorder(BorderFactory.createEtchedBorder());
+
             JLabel label = new JLabel(musica.getNomeMusica() + " - " + musica.getArtista());
             JButton bt_curtir_descurtir = new JButton(musica.isCurtida() ? "Descurtir" : "Curtir");
             JButton bt_add_playlist = new JButton("Adicionar à Playlist");
+
+            bt_curtir_descurtir.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            bt_add_playlist.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
             bt_curtir_descurtir.addActionListener(e -> {
                 try {
@@ -87,8 +95,12 @@ public class ResultadoBusca extends JFrame {
             painel.add(label);
             painel.add(bt_curtir_descurtir);
             painel.add(bt_add_playlist);
-            add(painel);
+            contentPanel.add(painel);
         }
+
+        JScrollPane scrollPane = new JScrollPane(contentPanel);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        add(scrollPane);
 
         setVisible(true);
     }

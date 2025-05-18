@@ -38,9 +38,9 @@ public class PlaylistFrame extends JFrame {
         JButton bt_nova_playlist = new JButton("Criar Playlist");
         JButton bt_excluir_playlist = new JButton("Excluir Playlist");
         JButton bt_ver_musicas = new JButton("Ver Músicas");
-        botoes.add(bt_nova_playlist);
-        botoes.add(bt_excluir_playlist);
-        botoes.add(bt_ver_musicas);
+        botoes.add(bt_nova_playlist).setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botoes.add(bt_excluir_playlist).setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botoes.add(bt_ver_musicas).setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         add(botoes, BorderLayout.SOUTH);
 
         bt_nova_playlist.addActionListener(e -> {

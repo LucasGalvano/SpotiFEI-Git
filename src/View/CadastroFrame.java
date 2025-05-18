@@ -91,6 +91,7 @@ public class CadastroFrame extends javax.swing.JFrame {
         bt_cadastrar_cadastro = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(51, 51, 51));
 
         lbl_SpotiFEI_cadastro.setFont(new java.awt.Font("Verdana", 1, 48)); // NOI18N
         lbl_SpotiFEI_cadastro.setForeground(new java.awt.Color(0, 102, 0));
@@ -119,6 +120,7 @@ public class CadastroFrame extends javax.swing.JFrame {
         bt_cadastrar_cadastro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         bt_cadastrar_cadastro.setForeground(new java.awt.Color(0, 102, 0));
         bt_cadastrar_cadastro.setText("Cadastrar-se");
+        bt_cadastrar_cadastro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_cadastrar_cadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_cadastrar_cadastroActionPerformed(evt);
