@@ -36,6 +36,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         bt_play_home.addActionListener(e -> lbl_musicaAtual.setText(lbl_nome_musica.getText()));
         bt_play_home2.addActionListener(e -> lbl_musicaAtual.setText(lbl_nome_musica2.getText()));
         bt_play_home3.addActionListener(e -> lbl_musicaAtual.setText(lbl_nome_musica3.getText()));
+        bt_curtir_home.addActionListener(e -> tpc.curtirMusicaAtual());
         
         tpc.carregarMusicasAleatorias();
     }
@@ -168,6 +169,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     public void setLbl_nome_musica3(JLabel lbl_nome_musica3) {
         this.lbl_nome_musica3 = lbl_nome_musica3;
+    }
+
+    public JLabel getLbl_musicaAtual() {
+        return lbl_musicaAtual;
+    }
+
+    public void setLbl_musicaAtual(JLabel lbl_musicaAtual) {
+        this.lbl_musicaAtual = lbl_musicaAtual;
     }
     
     
@@ -479,4 +488,5 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel sugestoesPanel;
     private javax.swing.JTextField txt_busca_home;
     // End of variables declaration//GEN-END:variables
+
 }
